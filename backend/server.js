@@ -7,32 +7,34 @@ const path = require("path");
 const app = express();
 
 /* =========================
-   CORS CONFIG (Production Safe)
+   CORS CONFIG (FINAL FIXED)
 ========================= */
+
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://library-management-system-4oey.vercel.app",
-  "https://library-management-system-6y22.onrender.com"
+  "https://library-management-system-4oey.vercel.app"
 ];
 
-app.use(cors({
-  origin: allowedOrigins
-}));
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (Postman, mobile apps, etc.)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true, // ❌ REMOVE THIS
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// 🔥 Handle preflight requests properly
-
+// Handle preflight requests
+app.options("*", cors());
 
 app.use(express.json());
 
@@ -69,7 +71,7 @@ mongoose
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => {
     console.error("❌ MongoDB Connection Error:", err.message);
-    process.exit(1); // stops app if DB fails
+    process.exit(1);
   });
 
 /* =========================
