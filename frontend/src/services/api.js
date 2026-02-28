@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://library-management-system-6y22.onrender.com/api",
-  
+  baseURL: "https://library-management-system-1-gd6n.onrender.com/api"
 });
 
 API.interceptors.request.use((req) => {
