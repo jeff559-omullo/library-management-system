@@ -1,7 +1,6 @@
 const Book = require("../models/Book");
 const Transaction = require("../models/Transaction");
 
-
 // ================== RESERVE / BORROW ==================
 exports.reserveBook = async (req, res) => {
   try {
@@ -23,7 +22,7 @@ exports.reserveBook = async (req, res) => {
     if (existing)
       return res.status(400).json({ message: "You already borrowed this book" });
 
-    // reduce stock
+    // Reduce stock
     book.available -= 1;
     await book.save();
 
@@ -37,12 +36,10 @@ exports.reserveBook = async (req, res) => {
     });
 
     res.json(transaction);
-
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 // ================== RETURN ==================
 exports.returnBook = async (req, res) => {
@@ -70,17 +67,15 @@ exports.returnBook = async (req, res) => {
 
     await transaction.save();
 
-    // restore stock
+    // Restore stock
     transaction.book.available += 1;
     await transaction.book.save();
 
     res.json(transaction);
-
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 // ================== STUDENT REPORT ==================
 exports.getMyTransactions = async (req, res) => {
@@ -92,11 +87,12 @@ exports.getMyTransactions = async (req, res) => {
       .sort({ createdAt: -1 });
 
     res.json(transactions);
-
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
+// ================== PAY FINE ==================
 exports.payFine = async (req, res) => {
   try {
     const transaction = await Transaction.findById(req.params.id);
@@ -113,7 +109,6 @@ exports.payFine = async (req, res) => {
     await transaction.save();
 
     res.json({ message: "Fine paid successfully" });
-
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

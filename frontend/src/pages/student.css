@@ -1,0 +1,336 @@
+/* student.css */
+
+/* Base Layout */
+.student-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.student-header h2 {
+  font-size: 2rem;
+  margin: 0 0 4px 0;
+  color: #1a2639;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.subtitle {
+  color: #5a6b7c;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.logout-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+  transform: scale(1.02);
+}
+
+/* Notification badge */
+.notification-badge {
+  background: #f44336;
+  color: white;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid #e0e7ef;
+  padding-bottom: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5a6b7c;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: all 0.2s;
+}
+
+.tabs button.active {
+  background: #2c3e50;
+  color: white;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.2);
+}
+
+.tabs button:not(.active):hover {
+  background: #eef2f6;
+  color: #1a2639;
+}
+
+.download-btn {
+  margin-left: auto;
+  background: #27ae60 !important;
+  color: white !important;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+}
+
+.download-btn:hover {
+  background: #219a52 !important;
+}
+
+/* Grid layout for cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* Card base */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #eef2f6;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Book card (available tab) */
+.book-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.book-cover {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  background: #f0f4f8;
+}
+
+.book-info h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.2rem;
+  color: #1a2639;
+}
+
+.book-author {
+  color: #5a6b7c;
+  font-size: 0.95rem;
+  margin: 0 0 12px 0;
+}
+
+.availability {
+  background: #e8f0fe;
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #2c3e50;
+  margin: 8px 0;
+}
+
+.ebook-badge {
+  background: #9b59b6;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  display: inline-block;
+  margin: 8px 0;
+}
+
+.action-btn {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: auto;
+}
+
+.action-btn:hover:not(:disabled) {
+  background: #2980b9;
+}
+
+.action-btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Ebook iframe container */
+.ebook-iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 12px;
+  background: #f8fafc;
+}
+
+.ebook-loading {
+  text-align: center;
+  color: #5a6b7c;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+/* Borrowed card */
+.borrowed-card {
+  border-left: 6px solid #f39c12;
+}
+
+.borrowed-card.overdue {
+  border-left-color: #e74c3c;
+  background: #fff5f5;
+}
+
+.borrowed-card h4 {
+  margin: 0 0 8px 0;
+  color: #1a2639;
+}
+
+.borrowed-card p {
+  margin: 4px 0;
+  color: #2c3e50;
+}
+
+.overdue-text {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.pay-btn,
+.return-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  min-width: 100px;
+}
+
+.pay-btn {
+  background: #27ae60;
+  color: white;
+}
+
+.pay-btn:hover {
+  background: #219a52;
+}
+
+.return-btn {
+  background: #e67e22;
+  color: white;
+}
+
+.return-btn:hover {
+  background: #d35400;
+}
+
+/* History card */
+.history-card {
+  border-left: 6px solid #95a5a6;
+  background: #f9fbfd;
+}
+
+.history-card h4 {
+  margin: 0 0 8px 0;
+  color: #1a2639;
+}
+
+.history-card p {
+  margin: 4px 0;
+  color: #4a5a6a;
+}
+
+/* Loading & error states */
+.loading,
+.error {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .student-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tabs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tabs button {
+    width: 100%;
+  }
+
+  .download-btn {
+    margin-left: 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

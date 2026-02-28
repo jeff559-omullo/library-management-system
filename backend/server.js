@@ -16,13 +16,19 @@ app.use(
 app.use(express.json());
 
 // ✅ MongoDB Connection with better logging
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => {
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 5000, // Fail fast if can't connect
+  socketTimeoutMS: 45000,
+}).then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => {
     console.error("❌ MongoDB Connection Error:", err.message);
     process.exit(1);
   });
+
+// ✅ Simple root route for health checks
+app.get("/", (req, res) => {
+  res.send("📚 Library Management System API is running");
+});
 
 // ✅ Routes
 app.use("/api/auth", require("./routes/authRoutes"));
