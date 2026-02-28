@@ -14,12 +14,11 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://library-management-system-6y22.onrender.com"
+      "https://library-management-system-4oey.vercel.app"
     ],
     credentials: true,
   })
 );
-
 app.use(express.json());
 
 /* =========================
