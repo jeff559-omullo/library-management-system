@@ -1,6 +1,7 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
+
 export default function Layout({ children, title }) {
   return (
     <div className="layout">

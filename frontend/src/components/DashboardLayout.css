@@ -49,7 +49,38 @@
   background: #f1f5f9;
   overflow-y: auto;
 }
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
 
+.book-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  gap: 15px;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.danger {
+  border: 2px solid red;
+}
+
+.overdue-item {
+  color: red;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}
 
 
 
