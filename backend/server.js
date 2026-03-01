@@ -61,18 +61,19 @@ app.get("/", (req, res) => {
 /* =========================
    MONGODB CONNECTION
 ========================= */
-
 mongoose
   .connect(process.env.MONGO_URI, {
     serverSelectionTimeoutMS: 5000,
     socketTimeoutMS: 45000,
   })
-  .then(() => console.log("✅ MongoDB Connected"))
+  .then(() => {
+    console.log("✅ MongoDB Connected");
+    console.log("Connected DB:", mongoose.connection.name);
+  })
   .catch((err) => {
     console.error("❌ MongoDB Connection Error:", err.message);
     process.exit(1);
   });
-
 /* =========================
    ROUTES
 ========================= */
